@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import com.example.demo.exceptions.IllegalToppingException;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Table(name = "puzze")
 @Getter
 @ToString
+@NoArgsConstructor
 public class Pizza extends Prodotto {
     @ManyToMany
     @JoinTable(
@@ -22,19 +24,8 @@ public class Pizza extends Prodotto {
     )
     private List<Topping> toppings = new ArrayList<>();
 
-    public Pizza(){
-        super("margherita", 700, 3.5);
-
-        this.toppings.add(new Topping("pomodoro", 100.0, 1.0, 50.0, "gr"));
-        this.toppings.add(new Topping("Mozzarella", 200.0, 0.5, 40.0, "gr"));
-    }
-
     public Pizza(String name, double kcal, double price, List<Topping> toppings) {
         super(name, kcal, price);
-
-        this.toppings.add(new Topping("pomodoro", 100.0, 1.0, 50.0, "gr"));
-        this.toppings.add(new Topping("Mozzarella", 200.0, 0.5, 40.0, "gr"));
-
         this.toppings.addAll(toppings);
     }
 

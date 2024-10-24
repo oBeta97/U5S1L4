@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,7 +19,7 @@ public class Topping extends Prodotto{
 
     @ManyToMany(mappedBy = "toppings")
     @Setter(AccessLevel.NONE)
-    private List<Pizza> pizzas;
+    private List<Pizza> pizzas = new ArrayList<>();
 
     public Topping(String name, double kcal, double price, double quantita, String unitaMisura){
         super(name, kcal, price);
