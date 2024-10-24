@@ -12,8 +12,8 @@ public interface PizzaRepository extends JpaRepository<Pizza, Long> {
     boolean existsByName(String nomeProdotto);
 
 
-
-    @Query("SELECT p FROM Pizza p JOIN p.toppings t WHERE t.name = 'Pummarol'")
+    // FETCH forza la "lettura" dei topping, analogo al FetchType.EAGER
+    @Query("SELECT p FROM Pizza p JOIN FETCH p.toppings t WHERE t.name = 'Pummarol'")
     List<Pizza> pizzaWithPummarol();
 
 }

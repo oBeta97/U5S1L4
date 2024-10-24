@@ -16,6 +16,9 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 public class Pizza extends Prodotto {
+
+// Forza ogni volta la lettura dei toppings, se si usa FETCH nella query lo fa solo quando c'è bisogno
+    //@ManyToMany(fetch = FetchType.EAGER)
     @ManyToMany
     @JoinTable(
             name = "pizze_toppings",
